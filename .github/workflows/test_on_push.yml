@@ -1,4 +1,4 @@
-name: Test template and generated project
+name: Test project
 
 on:
   workflow_dispatch:
