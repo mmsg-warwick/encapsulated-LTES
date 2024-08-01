@@ -20,8 +20,8 @@ from pathlib import Path
 
 # ---- Project information ------------------------------------------------------------
 project = "encapsulated-LTES"
-copyright = "2024, "Ferran Brosa Planella""
-author = ""Ferran Brosa Planella""
+copyright = "2024, Ferran Brosa Planella"
+author = "Ferran Brosa Planella"
 version = release = importlib.metadata.version("encapsulated_ltes")
 
 # ---- Path configuration -------------------------------------------------------------

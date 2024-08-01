@@ -1,8 +1,8 @@
-import pytest
-import encapsulated_ltes
 import importlib.util
 import sys
 from pathlib import Path
+
+import encapsulated_ltes
 
 
 def test_parameter_sets_entry_points():
