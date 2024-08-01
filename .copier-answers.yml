@@ -1,0 +1,17 @@
+# Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
+_commit: 8ec9f4c
+_src_path: https://github.com/pybamm-team/pybamm-cookiecutter.git
+backend: hatch
+branch: main
+email: Ferran.Brosa-Planella@warwick.ac.uk
+full_name: '"Ferran Brosa Planella"'
+license: BSD-3-Clause
+mypy: false
+org: mmsg-warwick
+platform: github
+project_name: encapsulated-LTES
+project_short_description: A project to simulate encapsulated latent thermal energy
+    storage systems.
+project_slug: encapsulated_ltes
+url: https://github.com/mmsg-warwick/encapsulated-LTES
+vcs: false
