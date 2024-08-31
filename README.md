@@ -31,6 +31,8 @@
 This repository contains the models for encapsulated latent energy storage (LTES) from the article:
 > F. Brosa Planella, A simple model for latent thermal energy storage systems with encapsulated phase-change material, Submitted for publication (2024).
 
+To reproduce the results from the article, run the examples in the `examples` directory. The notebook `validate_Nallusamy_et_al.ipynb` compares the models with the experimental data from the Nallusamy et al (2007) article, while the script `mesh_refinement.py` runs a convergence study on the model. The figures are saved in the `figures` directory.
+
 ## 🚀 Installing the package
 The package is not yet available on PyPI so it needs to be installed from the source code. These instructions assume that you have a compatible Python version installed (between 3.9 and 3.12).
 
