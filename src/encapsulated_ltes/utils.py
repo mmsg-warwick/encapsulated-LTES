@@ -4,6 +4,7 @@
 from pathlib import Path
 
 import matplotlib as mpl
+import scienceplots  # noqa: F401
 
 
 def root_dir():
