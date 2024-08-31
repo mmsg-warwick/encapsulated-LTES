@@ -1,16 +1,21 @@
 #
 # Plotting methods
 #
-import matplotlib.pyplot as plt
-import matplotlib as mpl
-from matplotlib import cm
 import math
+
+import matplotlib as mpl
+import matplotlib.pyplot as plt
 import numpy as np
+from matplotlib import cm
+
 from .utils import set_plotting_format
 
 
-def plot_comparison_data(simulation, datasets, xs=[0.25, 0.5, 0.75, 1], plotting_format="paper"):
+def plot_comparison_data(simulation, datasets, xs=None, plotting_format="paper"):
     set_plotting_format(plotting_format)
+
+    if xs is None:
+        xs = [0.25, 0.5, 0.75, 1]
     fig, axes = plt.subplots(2, 2, figsize=(5.5, 3.5), sharey=True, sharex=True)
 
     L = simulation.parameter_values["Pipe length [m]"]
@@ -83,7 +88,7 @@ def compare_0D_variables(simulations, output_variables=None, variable_names=None
         ax.plot(time, var, label=simulations[0].model.name)
         ax.set_xlabel("Time [s]")
         ax.set_ylabel(variable_names[i])
-    
+
     axes[0, 0].legend()
     fig.tight_layout()
     return fig, axes
@@ -116,7 +121,7 @@ def compare_1D_variables(simulations, output_variables=None, variable_names=None
     set_plotting_format(plotting_format)
     N_rows = math.ceil(len(output_variables)/ 2)
     fig, axes = plt.subplots(N_rows, 2, figsize=(5.5, 0.5 + 1.5 * N_rows), sharey=False, sharex=True)
-    
+
     viridis = cm.get_cmap('viridis')
     colours = viridis(np.linspace(0, 0.9, len(times)))
 
@@ -141,7 +146,7 @@ def compare_1D_variables(simulations, output_variables=None, variable_names=None
 
             ax.set_xlabel("z [m]")
             ax.set_ylabel(variable_names[i])
-    
+
     axes.flat[0].legend()
     fig.tight_layout()
     return fig, axes
@@ -171,7 +176,7 @@ def compare_2D_variables(simulations, output_variable=None, variable_name=None, 
     set_plotting_format(plotting_format)
     N_rows = math.ceil(len(times)/ 2)
     fig, axes = plt.subplots(N_rows, 2, figsize=(5.5, 0.5 + 1.5 * N_rows), sharey=True, sharex=True)
-    
+
     for t, ax in zip(times, axes.flat):
         if len(simulations) > 1:
             label = simulations[1].model.name
@@ -188,7 +193,7 @@ def compare_2D_variables(simulations, output_variable=None, variable_name=None, 
 
         ax.set_xlabel("r [mm]")
         ax.set_ylabel(variable_name)
-    
+
     axes.flat[0].legend()
     fig.tight_layout()
     return fig, axes
@@ -202,7 +207,6 @@ def draw_loglog_slope(
     inverted=False,
     color=None,
     polygon_kwargs=None,
-    label=True,
     labelcolor=None,
     label_kwargs=None,
     zorder=None,
@@ -268,7 +272,6 @@ def draw_loglog_slope(
     log_offset = y1 / (x1**slope)
 
     y2 = log_offset * ((x1 + width) ** slope)
-    height = y2 - y1
 
     # The vertices of the slope
     a = origin

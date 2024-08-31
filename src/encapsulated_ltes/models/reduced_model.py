@@ -2,6 +2,7 @@
 # Full model for encapuslated LTES
 #
 import pybamm
+
 from .base_LTES_model import BaseLTESModel
 
 

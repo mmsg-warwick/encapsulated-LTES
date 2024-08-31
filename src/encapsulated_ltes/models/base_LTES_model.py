@@ -1,10 +1,11 @@
 #
 # Base model for encapuslated LTES
 #
-import pybamm
 import numpy as np
-from ..parameters import EncapsulatedLTESParameters
+import pybamm
+
 from ..parameter_values import get_parameter_values
+from ..parameters import EncapsulatedLTESParameters
 
 
 class BaseLTESModel(pybamm.models.base_model.BaseModel):
@@ -58,7 +59,7 @@ class BaseLTESModel(pybamm.models.base_model.BaseModel):
         T_in = pybamm.boundary_value(T_f, "left")
         T_out = pybamm.boundary_value(T_f, "right")
 
-        phase = (H >= param.rho_s * param.c_p_s * param.T_m + param.rho_s * param.L / 2)
+        phase = (param.rho_s * param.c_p_s * param.T_m + param.rho_s * param.L / 2 <= H)
         phase_av = (H_av >= param.rho_s * param.c_p_s * param.T_m + param.rho_s * param.L / 2)
 
         ones_xr = pybamm.FullBroadcast(pybamm.Scalar(1), broadcast_domains={"primary": "capsule", "secondary": "pipe"})
@@ -92,8 +93,6 @@ class BaseLTESModel(pybamm.models.base_model.BaseModel):
                 "Total enthalpy of heat transfer fluid per unit area [J.m-2]": H_f,
                 "Total enthalpy per unit area [J.m-2]": H_tot,
                 "Variation in total enthalpy per unit area [J.m-2]": H_tot - H_tot0,
-                "Inlet temperature [K]": T_in,
-                "Outlet temperature [K]": T_out,
                 "Stored energy per unit area [J.m-2]": Q,
                 "Flux into phase-change material [W.m-2]": q,
                 "X-averaged flux into phase-change material [W.m-2]": q_av,

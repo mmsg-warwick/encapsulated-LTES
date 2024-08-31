@@ -1,11 +1,11 @@
-import pybamm
-import numpy as np
-import matplotlib.pyplot as plt
-import matplotlib as mpl
-import pandas as pd
 import gc
-import encapsulated_ltes as ltes
 import math
+
+import matplotlib.pyplot as plt
+import numpy as np
+import pybamm
+
+import encapsulated_ltes as ltes
 
 ltes.set_plotting_format("paper")
 
@@ -47,7 +47,7 @@ for l in range(min_mesh, max_mesh + 1):
 print("Generating energy conservation plot")
 errors = [[], []]
 for solution, error in zip(solutions, errors):
-    for level, sol in zip(level_range, solution):
+    for sol in solution:
         err = sol["Relative error in energy conservation [%]"].data.mean()
         error.append(err)
 
@@ -148,7 +148,7 @@ for (var, errors), ax in zip(data.items(), axes):
         ax.loglog([2**i for i in level_range[:-1]], error, ".-", label=model.name)
         ax.set_xscale("log", base=2)
         ax.set_xlabel("Mesh refinement factor")
-        ax.set_ylabel(f"Relative error")
+        ax.set_ylabel("Relative error")
         ax.set_title(var)
 
 i_mid = (len(level_range) - 2) // 2

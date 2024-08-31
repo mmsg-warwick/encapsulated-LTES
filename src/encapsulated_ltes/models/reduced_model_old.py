@@ -2,6 +2,7 @@
 # Full model for encapuslated LTES
 #
 import pybamm
+
 from .base_LTES_model import BaseLTESModel
 
 
@@ -73,8 +74,8 @@ class ReducedModel(BaseLTESModel):
                 "Phase-change material enthalpy [J.m-3]": H,
                 "X-averaged phase-change material enthalpy [J.m-3]": H_av,
                 "Phase": (
-                    H
-                    >= param.rho_s * param.c_p_s * param.T_m + param.rho_s * param.L / 2
+                    param.rho_s * param.c_p_s * param.T_m + param.rho_s * param.L / 2
+                    <= H
                 ),
                 "X-averaged phase": (
                     H_av

@@ -66,13 +66,14 @@ class EncapsulatedLTESParameters:
 
     def T2H(self, T):
         """Convert temperature to enthalpy"""
-        if T == self.T_m:
-            raise ValueError("Enthalpy is not uniquely defined at melting temperature")
+        if self.T_m == T:
+            msg = "Enthalpy is not uniquely defined at melting temperature"
+            raise ValueError(msg)
         H_l = self.rho_l * self.c_p_l * (T - self.T_m) + self.rho_s * (
             self.c_p_s * self.T_m + self.L
         )
         H_s = self.rho_s * self.c_p_s * T
-        return H_l * (T > self.T_m) + H_s * (T < self.T_m)
+        return H_l * (self.T_m < T) + H_s * (self.T_m > T)
 
     def k(self, H):
         """Effective conductivity as a function of the enthalpy"""
@@ -80,5 +81,5 @@ class EncapsulatedLTESParameters:
         H_l = self.rho_s * (self.c_p_s * self.T_m + self.L)
         k_m = (self.k_l - self.k_s) / (self.rho_s * self.L) * (H - H_s) + self.k_s
         return (
-            self.k_s * (H <= H_s) + k_m * (H > H_s) * (H < H_l) + self.k_l * (H >= H_l)
+            self.k_s * (H_s >= H) + k_m * (H_s < H) * (H_l > H) + self.k_l * (H_l <= H)
         )

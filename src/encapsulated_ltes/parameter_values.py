@@ -75,6 +75,7 @@ def get_parameter_values(parameter_set="Raul2018"):
             "Heat transfer fluid conductivity [W.m-1.K-1]": 0.6,
         }
     else:
-        raise ValueError("Parameter set '{}' not recognised".format(parameter_set))
+        msg = f"Parameter set '{parameter_set}' not recognised"
+        raise ValueError(msg)
 
     return pybamm.ParameterValues(parameter_values)

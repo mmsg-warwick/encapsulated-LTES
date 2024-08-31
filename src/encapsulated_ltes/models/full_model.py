@@ -2,6 +2,7 @@
 # Full model for encapuslated LTES
 #
 import pybamm
+
 from .base_LTES_model import BaseLTESModel
 
 
@@ -46,7 +47,7 @@ class FullModel(BaseLTESModel):
         q = -param.k(H_surf) * pybamm.BoundaryGradient(T_c, "right")
         dTfdt = (
             -pybamm.div(
-                (pybamm.upwind(T_f) * u_edge)
+                pybamm.upwind(T_f) * u_edge
                 # - param.k_f / (param.rho_f * param.c_p_f) * pybamm.grad(T_f)
             )
             + param.a / (param.epsilon * param.rho_f * param.c_p_f) * q

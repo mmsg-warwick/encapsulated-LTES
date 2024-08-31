@@ -1,9 +1,10 @@
 #
 # Auxiliary functions for the project
 #
-import matplotlib as mpl
-import scienceplots
 from pathlib import Path
+
+import matplotlib as mpl
+
 
 def root_dir():
     return Path(__file__).resolve().parents[2]
