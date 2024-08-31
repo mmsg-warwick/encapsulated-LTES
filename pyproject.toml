@@ -28,7 +28,12 @@ classifiers = [
   "Topic :: Scientific/Engineering",
 ]
 dynamic = ["version"]
-dependencies = ["pybamm",]
+dependencies = [
+  "pybamm[cite]",
+  "matplotlib",
+  "SciencePlots",
+  "jupyter",
+]
 
 [project.optional-dependencies]
 dev = [
@@ -120,5 +125,5 @@ ignore = [
   "PLR2004",     # Magic value used in comparison
 ]
 line-length = 100
-exclude = []
+exclude = ["__init__.py"]
 flake8-unused-arguments.ignore-variadic-names = true
