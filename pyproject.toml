@@ -63,14 +63,6 @@ Homepage = "https://github.com/mmsg-warwick/encapsulated-LTES"
 Discussions = "https://github.com/mmsg-warwick/encapsulated-LTES/discussions"
 Changelog = "https://github.com/mmsg-warwick/encapsulated-LTES/releases"
 
-[project.entry-points."parameter_sets"]
-Chen2020 = "encapsulated_ltes.parameters.input.Chen2020:get_parameter_values"
-
-[project.entry-points."models"]
-SPM = "encapsulated_ltes.models.input.SPM:SPM"
-BasicReservoir = "encapsulated_ltes.models.input.BasicReservoir:BasicReservoir"
-
-
 [tool.hatch]
 envs.default.dependencies = [
   "pybamm",
@@ -125,7 +117,10 @@ ignore = [
   "PLR0913",     # Too many arguments
   "PLR2004",     # Magic value used in comparison
   "EM101",       # Exception with string literals
+  "EM102",       # Exception with string literals
   "T201",        # allow use of print
+  "SIM105",      # Simplify comparison
+  "C408",        # Unnecessary dict call
 ]
 line-length = 100
 exclude = ["__init__.py"]
