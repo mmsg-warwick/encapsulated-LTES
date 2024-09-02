@@ -12,6 +12,7 @@ VENV_DIR = Path("./venv").resolve()
 @nox.session(name="docs")
 def build_docs(session: nox.Session) -> None:
     """Build the documentation and load it in a browser tab, rebuilding on changes."""
+    session.install("setuptools")
     session.install("-e", ".[docs]")
     with session.chdir("docs/"):
         # For local development
@@ -60,10 +61,9 @@ def run_coverage(session):
     session.posargs.append("--cov-report=xml")
     run_user_tests(session)
 
-
 @nox.session(name="dev")
 def set_dev(session):
-    """Install pybamm-cookiecutter in editable mode"""
+    """Install pybamm-cookie in editable mode"""
     session.install("virtualenv")
     session.run("virtualenv", os.fsdecode(VENV_DIR), silent=True)
     python = os.fsdecode(VENV_DIR.joinpath("bin/python"))

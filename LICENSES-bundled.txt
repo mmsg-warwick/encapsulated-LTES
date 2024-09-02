@@ -1,0 +1,10 @@
+This project and source distributions bundle several libraries that are
+compatibly licensed.
+
+
+Name: PyBaMM
+Files: - src/encapsulated_ltes/parameters/input/Chen2020.py
+       - src/encapsulated_ltes/models/input/BasicReservoir.py
+       - src/encapsulated_ltes/models/input/SPM.py
+       - src/encapsulated_ltes/entry_point.py
+License: BSD-3-Clause
