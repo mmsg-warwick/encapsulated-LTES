@@ -57,9 +57,13 @@ def run_user_tests(session):
 @nox.session(name="coverage")
 def run_coverage(session):
     """Run the coverage tests and generate an XML report."""
-    session.posargs.append("--cov=src/encapsulated_ltes")
-    session.posargs.append("--cov-report=xml")
-    run_user_tests(session)
+    session.install("setuptools", silent=False)
+    session.install("coverage", silent=False)
+    session.install("-e", ".[dev]", silent=False)
+    session.run("pytest", "--cov=src/encapsulated_ltes", "--cov-report=xml", "tests/user_tests")
+    # session.posargs.append("--cov=src/electrode_coating")
+    # session.posargs.append("--cov-report=xml")
+    # run_user_tests(session)
 
 @nox.session(name="dev")
 def set_dev(session):
