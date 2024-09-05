@@ -34,14 +34,20 @@ for l in range(min_mesh, max_mesh + 1):
         x = model.variables["x [m]"]
         var_pts = {r: math.floor(10 * 2**l), x: math.floor(20 * 2**l)}
         sim = pybamm.Simulation(model, parameter_values=param, var_pts=var_pts)
-        sol = sim.solve(np.linspace(0, 10000, 2000))
+        # sol = sim.solve(np.linspace(0, 10000, 2000))
+        sol = sim.solve([0, 10000])
+
+        del sim
+        gc.collect()
 
         solution.append(sol)
         time.append(sol.solve_time.value)
 
-        del sim
-        gc.collect()
         print(f"{model.name}: {sol.solve_time}")
+
+        del sol
+        gc.collect()
+
 
 # Plot convergence of energy conservation
 print("Generating energy conservation plot")
