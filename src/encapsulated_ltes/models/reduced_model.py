@@ -84,7 +84,16 @@ class ReducedModel(BaseLTESModel):
             Q: pybamm.Scalar(0),
         }
 
+
+
         ######################
         # Set variables
         ######################
         self._set_output_variables(T_f, T_c, H, Q)
+
+        self.variables.update(
+            {
+                "X-averaged phase-change material enthalpy [J.m-3]": H_av,
+                "X-averaged phase-change material temperature [K]": T_c_av,
+            }
+        )
