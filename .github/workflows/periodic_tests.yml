@@ -20,7 +20,7 @@ jobs:
           python-version: 3.12
 
       - name: Set up uv
-        uses: yezz123/setup-uv@v4
+        uses: yezz123/setup-uv@v4.1
         with:
           uv-venv: ".venv"
 
