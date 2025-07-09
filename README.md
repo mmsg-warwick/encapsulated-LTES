@@ -29,7 +29,7 @@
 <!-- prettier-ignore-end -->
 
 This repository contains the models for encapsulated latent energy storage (LTES) from the article:
-> F. Brosa Planella, A simple model for latent thermal energy storage systems with encapsulated phase-change material, Submitted for publication (2024).
+> F. Brosa Planella, [A simple model for latent thermal energy storage systems with encapsulated phase-change material](https://doi.org/10.1016/j.ijheatmasstransfer.2024.126533), International Journal of Heat and Mass Transfer 239 (2025) 126533.
 
 To reproduce the results from the article, run the examples in the `examples` directory. The notebook `validate_Nallusamy_et_al.ipynb` compares the models with the experimental data from the Nallusamy et al (2007) article, while the script `mesh_refinement.py` runs a convergence study on the model. The figures are saved in the `figures` directory.
 
